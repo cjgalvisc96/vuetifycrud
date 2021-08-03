@@ -4,10 +4,17 @@ import vuetify from './plugins/vuetify'
 // Owner components
 import Home from './components/Home'
 import ListArticles from './components/ListArticles'
+import CreateArticle from './components/CreateArticle'
+import UpdateArticle from './components/UpdateArticle'
+import Contact from './components/Contact'
 
-// Create components
+// Create owner components
 Vue.component('Home', Home);
 Vue.component('ListArticles', ListArticles);
+Vue.component('CreateArticle', CreateArticle);
+Vue.component('UpdateArticle', UpdateArticle);
+Vue.component('Contact', Contact);
+
 
 Vue.config.productionTip = false
 

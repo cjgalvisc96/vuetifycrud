@@ -50,21 +50,18 @@
       
       <v-dialog v-model="dialog" max-width="350">
         <v-card>
-            <v-card-title class="headline">
-                Do you want remove this Article?
-            </v-card-title>
+            <v-card-title class="headline">Do you want remove this Article?</v-card-title>
             <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn @click="dialogo = false">Cancel</v-btn>
+                <v-spacer/>
+                <v-btn @click="dialog = false">Cancel</v-btn>
                 <v-btn @click="confirmDelete(id)" color="error">Confirm</v-btn>
             </v-card-actions>
         </v-card>
       </v-dialog>
     
-    <v-snackbar v-model="snackbar" color="success">
-        {{textsnack}}
+    <v-snackbar v-model="snackbar" color="success">{{textsnack}}
         <template v-slot:action="{attrs}">
-            <v-btn text v-bind="attrs" @click="snackbar = false"/>
+            <v-btn text v-bind="attrs" @click="snackbar = false">Close</v-btn>
         </template>
     </v-snackbar>
   </v-container>
