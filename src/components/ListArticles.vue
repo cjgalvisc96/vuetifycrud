@@ -10,9 +10,7 @@
       <v-row>
           <v-col class="mb-1">
               <v-btn :to="{name:'CreateArticle'}" class="mx-2" fab dark color="indigo">
-                  <v-icon dark>
-                      mdi-plus
-                  </v-icon>
+                  <v-icon dark> mdi-plus </v-icon>
               </v-btn>
           </v-col>
       </v-row>
@@ -59,7 +57,6 @@
                 <v-spacer></v-spacer>
                 <v-btn @click="dialogo = false">Cancel</v-btn>
                 <v-btn @click="confirmDelete(id)" color="error">Confirm</v-btn>
-
             </v-card-actions>
         </v-card>
       </v-dialog>
@@ -67,9 +64,7 @@
     <v-snackbar v-model="snackbar" color="success">
         {{textsnack}}
         <template v-slot:action="{attrs}">
-            <v-btn text v-bind="attrs" @click="snackbar = false">
-
-            </v-btn>
+            <v-btn text v-bind="attrs" @click="snackbar = false"/>
         </template>
     </v-snackbar>
   </v-container>
