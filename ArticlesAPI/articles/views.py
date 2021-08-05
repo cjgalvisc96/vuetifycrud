@@ -19,12 +19,6 @@ class ArticleListAPIView(generics.ListCreateAPIView):
 
 
 class ArticleRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-
-
-    def retrieve(self, request, *args, **kwargs):
-        _id = self.kwargs.get('_id')
-        object = Article.objects.get(_id=_id)
-        serializer = ArticleSerializer(object)
-        return Response(serializer.data)
+    queryset = Article.objects.all()
+    lookup_field = '_id'
