@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const ARTICLES_API_URL = "http://127.0.0.1:8000/api/v1/articles"
+const ARTICLES_API_URL = "http://localhost:8000/api/v1/articles/"
 
 
-const getArticles = async () => {
+const getArticlesAPI = async () => {
     try {
         const response = await axios.get(ARTICLES_API_URL);
         const articles = response.data
@@ -14,7 +14,7 @@ const getArticles = async () => {
     }
 }
 
-const createArticle = async body => {
+const createArticleAPI = async body => {
     try {
         const response = await axios.post(
             ARTICLES_API_URL,
@@ -28,7 +28,7 @@ const createArticle = async body => {
     }
 }
 
-const getArticleById = async _id => {
+const getArticleByIdAPI = async _id => {
     try {
         const response = await axios.get(ARTICLES_API_URL + _id);
         const article = response.data
@@ -40,7 +40,7 @@ const getArticleById = async _id => {
 }
 
 
-const updateArticle = async (_id, body) => {
+const updateArticleAPI = async (_id, body) => {
     try {
         const response = await axios.put(
             ARTICLES_API_URL + _id,
@@ -54,7 +54,7 @@ const updateArticle = async (_id, body) => {
     }
 }
 
-const partialUpdateArticle = async (_id, body) => {
+const partialUpdateArticleAPI = async (_id, body) => {
     try {
         const response = await axios.patch(
             ARTICLES_API_URL + _id,
@@ -68,7 +68,7 @@ const partialUpdateArticle = async (_id, body) => {
     }
 }
 
-const deleteArticle = async _id => {
+const deleteArticleAPI = async _id => {
     try {
         const response = await axios.delete(ARTICLES_API_URL + _id);
         const article = response.data
@@ -81,10 +81,10 @@ const deleteArticle = async _id => {
 
 
 export {
-    getArticles,
-    getArticleById,
-    createArticle,
-    updateArticle,
-    partialUpdateArticle,
-    deleteArticle
+    getArticlesAPI,
+    getArticleByIdAPI,
+    createArticleAPI,
+    updateArticleAPI,
+    partialUpdateArticleAPI,
+    deleteArticleAPI
 }

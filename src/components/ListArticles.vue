@@ -10,7 +10,7 @@
             </v-row>
             <v-row>
                 <v-col class="mb-1">
-                    <v-btn :to="{name:'CreateArticle'}" class="mx-2" fab dark color="indigo">
+                    <v-btn :to="{path:'/create-article'}" class="mx-2" fab dark color="indigo">
                         <v-icon dark> mdi-plus </v-icon>
                     </v-btn>
                 </v-col>
@@ -70,8 +70,32 @@
 </template>
 
 <script>
+import {getArticlesAPI} from '../api/articles.api.js';
+
 export default {
-    name: 'ListArticles'
+    name: 'ListArticles',
+    mounted(){
+        this.getArticles();
+    },
+    data(){
+        return{
+            dialog: false,
+            articles:null,
+            id:null,
+            snackbar:false,
+            textsnack: "Article removed!"
+        }
+    },
+    methods:{
+        getArticles(){
+            const articles = getArticlesAPI();
+            console.log(articles);
+            this.articles = articles.results;
+        },
+        confirmDelete(id){
+            return id;
+        }
+    }
 }
 </script>
 
