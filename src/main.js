@@ -30,11 +30,13 @@ const routes = [
   },
   {
     path: '/create-article',
-    component: CreateArticle
+    component: CreateArticle,
+    name: 'CreateArticle'
   },
   {
     path: '/update-article/:id',
-    component: UpdateArticle
+    component: UpdateArticle,
+    name: 'UpdateArticle'
   },
   {
     path: '/contact',

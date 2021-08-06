@@ -10,7 +10,7 @@
             </v-row>
             <v-row>
                 <v-col class="mb-1">
-                    <v-btn :to="{path:'/create-article'}" class="mx-2" fab dark color="indigo">
+                    <v-btn :to="{name:'CreateArticle'}" class="mx-2" fab dark color="indigo">
                         <v-icon dark> mdi-plus </v-icon>
                     </v-btn>
                 </v-col>
@@ -35,7 +35,7 @@
                                         <td>{{article.price}}</td>
                                         <td>{{article.stock}}</td>
                                         <td>
-                                            <v-btn fab small color="primary">
+                                            <v-btn :to="{name: 'UpdateArticle', params:{id: article._id}}" fab small color="primary">
                                                 <v-icon>mdi-pencil</v-icon>
                                             </v-btn>
                                             <v-btn @click.stop="dialog=true" @click="id=article._id" fab small color="error">

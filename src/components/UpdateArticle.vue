@@ -27,7 +27,35 @@
 </template>
 
 <script>
+import {getArticleByIdAPI, updateArticleAPI} from '../api/articles.api.js';
 export default {
-    name: "UpdateArticle"
+    name: "UpdateArticle",
+    async mounted(){
+        this.id = this.$route.params.id;
+        const articleToUpdate = await getArticleByIdAPI(this.id);
+        this.article = articleToUpdate
+    },
+    data(){
+        return{
+            id:null,
+            article: {
+                description: '',
+                price: '',
+                stock: ''
+            }
+        }
+    },
+    methods:{
+        async saveArticle(){
+            let router = this.$router;
+            let body = {
+                description: this.article.description,
+                price: this.article.price,
+                stock: this.article.stock
+            }
+            await updateArticleAPI(this.id, body);
+            router.push('/articles');
+        }
+    }
 }
 </script>
