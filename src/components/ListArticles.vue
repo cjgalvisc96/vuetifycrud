@@ -29,8 +29,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                    <tr v-for="article in articles" :key="article.id">
-                                        <td>{{article.id}}</td>
+                                    <tr v-for="article in articles" :key="article._id">
+                                        <td>{{article._id}}</td>
                                         <td>{{article.description}}</td>
                                         <td>{{article.price}}</td>
                                         <td>{{article.stock}}</td>
@@ -38,7 +38,7 @@
                                             <v-btn fab small color="primary">
                                                 <v-icon>mdi-pencil</v-icon>
                                             </v-btn>
-                                            <v-btn fab small color="error">
+                                            <v-btn @click.stop="dialog=true" @click="id=article._id" fab small color="error">
                                                 <v-icon>mdi-delete</v-icon>
                                             </v-btn>
                                         </td>
@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import {getArticlesAPI} from '../api/articles.api.js';
+import {getArticlesAPI, deleteArticleAPI} from '../api/articles.api.js';
 
 export default {
     name: 'ListArticles',
@@ -87,13 +87,15 @@ export default {
         }
     },
     methods:{
-        getArticles(){
-            const articles = getArticlesAPI();
-            console.log(articles);
+        async getArticles(){
+            const articles = await getArticlesAPI();
             this.articles = articles.results;
         },
-        confirmDelete(id){
-            return id;
+        async confirmDelete(id){  // "id" is used because "_id" is reserved word
+            await deleteArticleAPI(id);
+            this.getArticles();
+            this.dialog = false;
+            this.snackbar = true;
         }
     }
 }

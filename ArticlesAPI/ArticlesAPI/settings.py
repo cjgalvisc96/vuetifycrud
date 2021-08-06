@@ -74,6 +74,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ArticlesAPI.wsgi.application'
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8080'
