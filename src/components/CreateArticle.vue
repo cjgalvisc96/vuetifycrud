@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <c-container>
+        <v-container>
             <v-row class="text-center">
                 <v-col class="mb-4">
                     <h1 class="display-2 font-weight-bold mb-3">
@@ -22,12 +22,34 @@
                     </form>
                 </v-col>
             </v-row>
-        </c-container>
+        </v-container>
     </v-app>
 </template>
 
 <script>
+import {createArticleAPI} from '../api/articles.api.js';
 export default {
-    name: "CreateArticle"
+    name: "CreateArticle",
+    data(){
+        return {
+            article: {
+                description: '',
+                price: '',
+                stock: ''
+            }
+        }
+    },
+    methods:{
+        async saveArticle(){
+            let router = this.$router;
+            let body = {
+                description: this.article.description,
+                price: this.article.price,
+                stock: this.article.stock
+            }
+            await createArticleAPI(body);
+            router.push('/articles');
+        }
+    }
 }
 </script>
