@@ -1,4 +1,4 @@
-from rest_framework import generics, filters
+from rest_framework import generics
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
@@ -19,8 +19,8 @@ class ArticleListAPIView(generics.ListCreateAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     filter_fields = ('description', 'price', 'stock')
     search_fields = ('description', 'price', 'stock')
-    ordering_fields = ('stock')
-    ordering = ('-stock')
+    ordering_fields = ('stock',)
+
 
 
 class ArticleRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
