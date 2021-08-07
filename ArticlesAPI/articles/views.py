@@ -1,6 +1,11 @@
-from rest_framework import generics
+import json
+from rest_framework import generics, status
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.parsers import MultiPartParser
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from django_filters.rest_framework import DjangoFilterBackend
 from articles.models import Article
 from articles.serializers import ArticleSerializer
@@ -29,3 +34,13 @@ class ArticleRetrieveUpdateDestroyAPIView(
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()
     lookup_field = '_id'
+
+
+class TestJsonView(APIView):
+    parser_classes = (MultiPartParser, )
+
+    def post(self, request):
+        file = request.data.get('file')
+        file_content = file.read().decode('utf-8')
+        response = json.loads(file_content)
+        return Response(response, status=status.HTTP_200_OK)
