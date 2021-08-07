@@ -2,9 +2,9 @@ from rest_framework import generics
 from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
-
 from articles.models import Article
 from articles.serializers import ArticleSerializer
+
 
 class MyPagination(PageNumberPagination):
     page_size = 100
@@ -22,8 +22,9 @@ class ArticleListAPIView(generics.ListCreateAPIView):
     ordering_fields = ('stock',)
 
 
-
-class ArticleRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+class ArticleRetrieveUpdateDestroyAPIView(
+    generics.RetrieveUpdateDestroyAPIView
+):
     
     serializer_class = ArticleSerializer
     queryset = Article.objects.all()

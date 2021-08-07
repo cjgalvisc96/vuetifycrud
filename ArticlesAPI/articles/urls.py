@@ -1,6 +1,9 @@
 from django.urls import path, register_converter
 
-from articles.views import ArticleListAPIView, ArticleRetrieveUpdateDestroyAPIView
+from articles.views import (
+    ArticleListAPIView,
+    ArticleRetrieveUpdateDestroyAPIView
+)
 from articles.converters import ObjectIDConverter
 
 register_converter(ObjectIDConverter, 'object_id_converter')
